@@ -15,10 +15,17 @@ const Login = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const onLogin = () => {
-    if (email === 'a@mail.com' && password === '1234') {
-      Alert.alert('Success', 'Login Success');
+    if (email === '' && password === '') {
+      Alert.alert('Success', 'Login Success', [
+        {
+          text: 'OK',
+          onPress: () => {
+            navigation.navigate('HomeStack');
+          },
+        },
+      ]);
     } else {
-      Alert.alert('Error', 'Not registered, Redirecting...');
+      Alert.alert('Error', 'Wrong Password or Email');
     }
   };
   return (
@@ -59,7 +66,9 @@ const Login = ({navigation}) => {
             />
           </View>
           <View style={styles.inputWrapper}>
-            <Text style={styles.fontForgot}>Forgot Password?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('ForgetPwd')}>
+              <Text style={styles.fontForgot}>Forgot Password?</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.buttonWrapper}>
             <TouchableOpacity onPress={onLogin}>
@@ -70,7 +79,10 @@ const Login = ({navigation}) => {
           </View>
           <View style={styles.inputWrapper}>
             <Text style={styles.fontP}>
-              Don`t have an account? Let`s Sign Up
+              Don`t have an account? Let`s
+              <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+                <Text> Sign Up </Text>
+              </TouchableOpacity>
             </Text>
           </View>
         </View>

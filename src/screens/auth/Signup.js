@@ -11,7 +11,7 @@ import styles from '../../styles/auth';
 import InputLogin from '../../components/InputLogin';
 import imagebg from '../../assets/images/polabg.jpg';
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   return (
     <>
       <ScrollView style={styles.wrapper}>
@@ -53,7 +53,7 @@ const Signup = () => {
             />
           </View>
           <View style={styles.buttonWrapper}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Register</Text>
               </View>
@@ -61,7 +61,10 @@ const Signup = () => {
           </View>
           <View style={styles.inputWrapper}>
             <Text style={styles.fontP}>
-              Already have an account? Let`s Login
+              Already have an account? Let`s
+              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                <Text>Login</Text>
+              </TouchableOpacity>
             </Text>
           </View>
         </View>

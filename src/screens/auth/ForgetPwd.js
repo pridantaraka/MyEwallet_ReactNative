@@ -11,7 +11,7 @@ import styles from '../../styles/auth';
 import InputLogin from '../../components/InputLogin';
 import imagebg from '../../assets/images/polabg.jpg';
 
-const ForgotPwd = () => {
+const ForgetPwd = ({navigation}) => {
   return (
     <>
       <ScrollView style={styles.wrapper}>
@@ -40,7 +40,7 @@ const ForgotPwd = () => {
             />
           </View>
           <View style={styles.buttonWrapper}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('ResetPwd')}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Confirm</Text>
               </View>
@@ -51,4 +51,4 @@ const ForgotPwd = () => {
     </>
   );
 };
-export default ForgotPwd;
+export default ForgetPwd;

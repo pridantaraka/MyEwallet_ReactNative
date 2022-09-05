@@ -10,7 +10,7 @@ import styles from '../../styles/auth';
 import InputLogin from '../../components/InputLogin';
 import imagebg from '../../assets/images/polabg.jpg';
 
-const ResetPwd = () => {
+const ResetPwd = ({navigation}) => {
   return (
     <>
       <ScrollView style={styles.wrapper}>
@@ -48,7 +48,7 @@ const ResetPwd = () => {
             />
           </View>
           <View style={styles.buttonWrapper}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Confirm</Text>
               </View>

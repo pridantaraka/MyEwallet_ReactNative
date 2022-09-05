@@ -1,12 +1,13 @@
 import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from './src/screens/auth/Login';
 import Signup from './src/screens/auth/Signup';
-import Dashboard from './src/screens/home/Dashboard';
+import Main from './src/screens/main';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  return (
-    <Dashboard />
-  );
+  return <Main />;
 };
 
 export default App;

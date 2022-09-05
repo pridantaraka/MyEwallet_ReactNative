@@ -1,87 +1,69 @@
 // import {Center} from 'native-base';
 import {StyleSheet, Dimensions} from 'react-native';
-import {PRIMARY_COLOR, SECONDARY_COLOR, THIRD_COLOR} from './constant';
+import {
+  PRIMARY_COLOR,
+  SECONDARY_COLOR,
+  THIRD_COLOR,
+  FOURTH_COLOR,
+} from './constant';
 
 const styles = StyleSheet.create({
   wrapper: {
-    flex: 1,
+    height: Dimensions.get('screen').height,
+    marginTop: 20,
   },
-  fontP: {
-    fontWeight: '400',
-    fontSize: 16,
-    textAlign: 'center',
-    color: PRIMARY_COLOR,
+  wrapperName: {
+    flexDirection: 'column',
   },
-  fontH: {
-    fontWeight: '700',
-    fontSize: 24,
-    textAlign: 'center',
-    color: PRIMARY_COLOR,
-  },
-  fontWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  header: {
-    height: Dimensions.get('screen').width / 2,
-    justifyContent: 'center',
-  },
-  content: {
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    height: Dimensions.get('screen').height * 80 / 100,
-    backgroundColor: THIRD_COLOR,
-    paddingHorizontal: 20,
-    paddingVertical: 50,
-    elevation: 5,
-  },
-  buttonWrapper: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 50,
-  },
-  button: {
-    backgroundColor: SECONDARY_COLOR,
-    width: (Dimensions.get('screen').width * 90) / 100,
-    paddingVertical: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 3,
-    borderRadius: 10,
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: '400',
-    fontSize: 16,
-  },
-  inputWrapper: {
-    marginBottom: 15,
-    marginTop: 15,
-  },
-  image: {
-    flex: 1,
-    justifyContent: 'center',
-    height: 250,
-    overflow: 'hidden',
-  },
-  headerText: {
-    alignItems: 'center',
-    textAlign: 'center',
-    backgroundColor: '#000000c0',
-    fontSize: 30,
-    fontWeight: '800',
-    color: '#FFFFFF',
-  },
-  fontForgot: {
-    textAlign: 'right',
-    color: PRIMARY_COLOR,
-    fontSize: 16,
-    fontWeight: '400',
-  },
-  pinRow: {
+  wrapHistory: {
+    justifyContent: 'space-between',
     flexDirection: 'row',
-    flex: 1,
+    margin: 20,
+  },
+  historyName: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: FOURTH_COLOR,
+    paddingHorizontal: 20,
+    borderRadius: 15,
+    height: 100,
+  },
+  Button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 50,
     width: Dimensions.get('screen').width,
+    elevation: 3,
+    borderRadius: 15,
+    marginTop: 30,
+    backgroundColor: SECONDARY_COLOR,
+  },
+  WrappingTrans: {
+    marginVertical: 25,
+  },
+  LogoTrans: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  font1: {
+    fontWeight: '800',
+    fontSize: 18,
+    color: PRIMARY_COLOR,
+  },
+  font2: {
+    color: 'white',
+  },
+  font3: {
+    fontWeight: '800',
+    fontSize: 18,
+    color: 'white',
+  },
+  font4: {
+    fontWeight: '800',
+    fontSize: 18,
+    color: PRIMARY_COLOR,
+    textAlign: 'center',
   },
 });
 

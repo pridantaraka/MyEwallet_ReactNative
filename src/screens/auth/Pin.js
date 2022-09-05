@@ -12,7 +12,7 @@ import styles from '../../styles/auth';
 import InputLogin from '../../components/InputLogin';
 import imagebg from '../../assets/images/polabg.jpg';
 
-const Pin = () => {
+const Pin = ({navigation}) => {
   return (
     <>
       <ScrollView style={styles.wrapper}>
