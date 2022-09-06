@@ -14,35 +14,40 @@ import {
   THIRD_COLOR,
   FOURTH_COLOR,
 } from '../../styles/constant';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import styles from '../../styles/global';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Card from '../../components/Card';
 import Data from '../../assets/Data';
 
+const BottomTab = createBottomTabNavigator();
+
 const Dashboard = ({navigation}) => {
   return (
     <>
       <ScrollView style={styles.wrapper}>
-        <View style={styleslocal.wrapperFlex}>
-          <View style={styleslocal.picture}>
-            <Image />
+        <TouchableOpacity onPress={() => navigation.navigate('Profilemenu')}>
+          <View style={styleslocal.wrapperFlex}>
+            <View style={styles.picture}>
+              <Image />
+            </View>
+            <View style={styleslocal.wrapperName}>
+              <Text>Hello,</Text>
+              <Text>Name</Text>
+            </View>
+            <View>
+              <Icon name="notifications-outline" size={20} />
+            </View>
           </View>
-          <View style={styleslocal.wrapperName}>
-            <Text>Hello,</Text>
-            <Text>Name</Text>
-          </View>
-          <View>
-            <Icon name="notifications-outline" size={20} />
-          </View>
-        </View>
+        </TouchableOpacity>
         <View>
           <View style={styleslocal.BalanceBox}>
             <View>
               <Text>Balance</Text>
             </View>
             <View>
-              <Text>120000</Text>
+              <Text style={styleslocal.font1}>Rp. 120.000</Text>
             </View>
             <View>
               <Text>Phone Number</Text>
@@ -107,11 +112,6 @@ const styleslocal = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 25,
   },
-  picture: {
-    height: 50,
-    width: 50,
-    backgroundColor: PRIMARY_COLOR,
-  },
   wrapperName: {
     flexDirection: 'column',
   },
@@ -140,6 +140,11 @@ const styleslocal = StyleSheet.create({
   },
   btnFlex: {
     flexDirection: 'row',
+  },
+  font1: {
+    fontSize: 32,
+    fontWeight: '600',
+    color: PRIMARY_COLOR,
   },
 });
 

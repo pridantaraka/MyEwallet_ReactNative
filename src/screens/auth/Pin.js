@@ -57,16 +57,11 @@ const Pin = ({navigation}) => {
             <Text style={styles.fontForgot}>Forgot Password?</Text>
           </View>
           <View style={styles.buttonWrapper}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Confirm</Text>
               </View>
             </TouchableOpacity>
-          </View>
-          <View style={styles.inputWrapper}>
-            <Text style={styles.fontP}>
-              Don`t have an account? Let`s Sign Up
-            </Text>
           </View>
         </View>
       </ScrollView>

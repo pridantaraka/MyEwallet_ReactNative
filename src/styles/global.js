@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 50,
-    width: Dimensions.get('screen').width,
     elevation: 3,
     borderRadius: 15,
     marginTop: 30,
@@ -45,6 +44,11 @@ const styles = StyleSheet.create({
   LogoTrans: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  picture: {
+    height: 50,
+    width: 50,
+    backgroundColor: PRIMARY_COLOR,
   },
   font1: {
     fontWeight: '800',

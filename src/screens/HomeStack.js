@@ -8,6 +8,9 @@ import Confrim from './transaction/Confirm';
 import Success from './transaction/Success';
 import Failed from './transaction/Failed';
 import Topup from './transaction/Topup';
+import Profilemenu from './profile/Profilemenu';
+import Profile from './profile/Profile';
+import EditPwd from './profile/EditPwd';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +25,9 @@ const HomeStack = () => {
       <Stack.Screen name="Success" component={Success} />
       <Stack.Screen name="Failed" component={Failed} />
       <Stack.Screen name="Topup" component={Topup} />
+      <Stack.Screen name="Profilemenu" component={Profilemenu} />
+      <Stack.Screen name="Personal Info" component={Profile} />
+      <Stack.Screen name="Change Password" component={EditPwd} />
     </Stack.Navigator>
   );
 };

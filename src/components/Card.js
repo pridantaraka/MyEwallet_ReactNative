@@ -28,7 +28,7 @@ const styleslocal = StyleSheet.create({
     backgroundColor: SECONDARY_COLOR,
     height: 70,
     alignItems: 'center',
-    marginVertical: 25,
+    marginVertical: 5,
   },
   name: {
     flexDirection: 'column',
