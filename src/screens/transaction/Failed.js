@@ -15,8 +15,9 @@ import {
 } from '../../styles/constant';
 import logo from '../../assets/images/failed.png';
 import React from 'react';
+import {CardTransfer} from '../../components/CardMenu';
 
-const Failed = ({navigation}) => {
+const Success = ({navigation}) => {
   return (
     <ScrollView style={styles.wrapper}>
       <View style={styles.WrappingTrans}>
@@ -24,19 +25,13 @@ const Failed = ({navigation}) => {
           <Image source={logo} />
         </View>
         <View>
-          <Text style={styles.font4}>Transfer Failed</Text>
+          <Text style={styles.font6}>Transfer Failed</Text>
         </View>
       </View>
       <View style={styles.wrapHistory}>
         <Text style={styles.font1}>Transfer To</Text>
       </View>
-      <View style={styleslocal.TransName}>
-        <View style={styleslocal.PadTrans} />
-        <View style={styles.wrapperName}>
-          <Text>Name</Text>
-          <Text>Phone Number</Text>
-        </View>
-      </View>
+      <CardTransfer name="My name Is" phone="012312333" />
       <View style={styleslocal.BoxWrap}>
         <View style={styleslocal.Box}>
           <Text style={styles.font2}>Amount</Text>
@@ -55,7 +50,7 @@ const Failed = ({navigation}) => {
         <Text style={styles.font2}>Notes</Text>
         <Text style={styles.font3}>For buying some socks</Text>
       </View>
-      <View>
+      <View style={styles.footer}>
         <TouchableOpacity
           style={styles.Button}
           onPress={() => navigation.navigate('Transfer')}>
@@ -68,8 +63,7 @@ const Failed = ({navigation}) => {
 const styleslocal = StyleSheet.create({
   BoxWrap: {
     justifyContent: 'space-between',
-    marginHorizontal: 10,
-    marginVertical: 20,
+    marginVertical: 10,
     flexDirection: 'row',
   },
   Box: {
@@ -77,32 +71,17 @@ const styleslocal = StyleSheet.create({
     backgroundColor: SECONDARY_COLOR,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 180,
+    width: 160,
     height: 100,
   },
   BoxLong: {
-    marginHorizontal: 10,
-    marginVertical: 20,
+    marginVertical: 10,
     borderRadius: 15,
     backgroundColor: SECONDARY_COLOR,
     height: 100,
     justifyContent: 'center',
     paddingLeft: 20,
   },
-  TransName: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: FOURTH_COLOR,
-    borderRadius: 15,
-    height: 100,
-  },
-  PadTrans: {
-    marginHorizontal: 30,
-    backgroundColor: PRIMARY_COLOR,
-    height: 50,
-    width: 50,
-    borderRadius: 15,
-  },
 });
 
-export default Failed;
+export default Success;

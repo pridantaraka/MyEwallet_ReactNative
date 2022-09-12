@@ -1,18 +1,20 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import React from 'react';
 import {
-  PRIMARY_COLOR,
-  SECONDARY_COLOR,
-  THIRD_COLOR,
-  FOURTH_COLOR,
-} from '../../styles/constant';
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
+import React from 'react';
+import {PRIMARY_COLOR} from '../../styles/constant';
 import styles from '../../styles/global';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CardMenu} from '../../components/CardMenu';
 
 const Profilemenu = ({navigation}) => {
   return (
-    <View>
+    <ScrollView style={styles.wrapper}>
       <View style={styleslocal.wrapper}>
         <View style={styleslocal.picture}>
           <Image />
@@ -38,13 +40,13 @@ const Profilemenu = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('Change Password')}>
         <CardMenu menu="Change Password" icon="caret-forward" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
         <CardMenu menu="Change Pin" icon="caret-forward" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
         <CardMenu menu="Logout" />
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -52,22 +54,14 @@ const styleslocal = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     marginTop: 50,
-    marginBottom: 130,
+    marginBottom: 100,
   },
   picture: {
-    height: 50,
-    width: 50,
+    height: 100,
+    width: 100,
     backgroundColor: PRIMARY_COLOR,
     marginBottom: 15,
-  },
-  card: {
-    height: 50,
-    backgroundColor: SECONDARY_COLOR,
     borderRadius: 15,
-    paddingHorizontal: 25,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   text1: {
     marginTop: 10,

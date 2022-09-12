@@ -14,10 +14,10 @@ import Data from '../../assets/Data';
 const History = ({navigation}) => {
   return (
     <ScrollView style={styles.wrapper}>
-      <View>
+      <View style={styles.content}>
         <View style={styles.wrapHistory}>
           <View>
-            <Text>Transaction History</Text>
+            <Text style={styles.font1}>Transaction History</Text>
           </View>
         </View>
         <FlatList

@@ -4,7 +4,6 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
   FlatList,
   Image,
 } from 'react-native';
@@ -20,6 +19,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Card from '../../components/Card';
 import Data from '../../assets/Data';
+import {CardProfile} from '../../components/CardMenu';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -28,79 +28,75 @@ const Dashboard = ({navigation}) => {
     <>
       <ScrollView style={styles.wrapper}>
         <TouchableOpacity onPress={() => navigation.navigate('Profilemenu')}>
-          <View style={styleslocal.wrapperFlex}>
-            <View style={styles.picture}>
-              <Image />
-            </View>
-            <View style={styleslocal.wrapperName}>
-              <Text>Hello,</Text>
-              <Text>Name</Text>
-            </View>
-            <View>
-              <Icon name="notifications-outline" size={20} />
-            </View>
-          </View>
-        </TouchableOpacity>
-        <View>
-          <View style={styleslocal.BalanceBox}>
-            <View>
-              <Text>Balance</Text>
-            </View>
-            <View>
-              <Text style={styleslocal.font1}>Rp. 120.000</Text>
-            </View>
-            <View>
-              <Text>Phone Number</Text>
-            </View>
-          </View>
-          <View style={styleslocal.WrapperBetwen}>
-            <View style={styleslocal.buttonPress}>
-              <TouchableOpacity
-                style={styleslocal.btnFlex}
-                onPress={() => navigation.navigate('Transaction')}>
-                <View>
-                  <Icon name="arrow-up" size={20} style={styles.font2} />
-                </View>
-                <View>
-                  <Text style={styles.font2}>Transfer</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View style={styleslocal.buttonPress}>
-              <TouchableOpacity
-                style={styleslocal.btnFlex}
-                onPress={() => navigation.navigate('Topup')}>
-                <View>
-                  <Icon name="add" size={20} style={styles.font2} />
-                </View>
-                <View>
-                  <Text style={styles.font2}>TopUp</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.wrapHistory}>
-            <View>
-              <Text>Transaction History</Text>
-            </View>
-            <View>
-              <TouchableOpacity onPress={() => navigation.navigate('History')}>
-                <Text>See All</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <FlatList
-            data={Data}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Transfer')}>
-                  <Card item={item} />
-                </TouchableOpacity>
-              );
-            }}
-            keyExtractor={item => String(item.id)}
+          <CardProfile
+            name="My name Is"
+            greeting="hello,"
+            icon="notifications-outline"
           />
+        </TouchableOpacity>
+        <View style={styles.content}>
+          <View>
+            <View style={styleslocal.BalanceBox}>
+              <View>
+                <Text>Balance</Text>
+              </View>
+              <View>
+                <Text style={styleslocal.font1}>Rp. 120.000</Text>
+              </View>
+              <View>
+                <Text>Phone Number</Text>
+              </View>
+            </View>
+            <View style={styleslocal.WrapperBetwen}>
+              <View style={styleslocal.buttonPress}>
+                <TouchableOpacity
+                  style={styleslocal.btnFlex}
+                  onPress={() => navigation.navigate('Transaction')}>
+                  <View>
+                    <Icon name="arrow-up" size={20} style={styles.font2} />
+                  </View>
+                  <View>
+                    <Text style={styles.font2}>Transfer</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styleslocal.buttonPress}>
+                <TouchableOpacity
+                  style={styleslocal.btnFlex}
+                  onPress={() => navigation.navigate('Topup')}>
+                  <View>
+                    <Icon name="add" size={20} style={styles.font2} />
+                  </View>
+                  <View>
+                    <Text style={styles.font2}>TopUp</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.wrapHistory}>
+              <View>
+                <Text>Transaction History</Text>
+              </View>
+              <View>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('History')}>
+                  <Text>See All</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <FlatList
+              data={Data}
+              renderItem={({item}) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('Transfer')}>
+                    <Card item={item} />
+                  </TouchableOpacity>
+                );
+              }}
+              keyExtractor={item => String(item.id)}
+            />
+          </View>
         </View>
       </ScrollView>
     </>

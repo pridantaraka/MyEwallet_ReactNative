@@ -11,6 +11,8 @@ import Topup from './transaction/Topup';
 import Profilemenu from './profile/Profilemenu';
 import Profile from './profile/Profile';
 import EditPwd from './profile/EditPwd';
+import Contact from './home/Contact';
+import EditPhone from './profile/EditPhone';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +30,8 @@ const HomeStack = () => {
       <Stack.Screen name="Profilemenu" component={Profilemenu} />
       <Stack.Screen name="Personal Info" component={Profile} />
       <Stack.Screen name="Change Password" component={EditPwd} />
+      <Stack.Screen name="Contact" component={Contact} />
+      <Stack.Screen name="Add Phone" component={EditPhone} />
     </Stack.Navigator>
   );
 };

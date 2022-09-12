@@ -1,13 +1,17 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Login from './src/screens/auth/Login';
-import Signup from './src/screens/auth/Signup';
 import Main from './src/screens/main';
-
-const Stack = createNativeStackNavigator();
+import {Provider} from 'react-redux';
+import {store, persistor} from './src/redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
-  return <Main />;
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Main />
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default App;

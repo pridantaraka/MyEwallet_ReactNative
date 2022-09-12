@@ -1,11 +1,11 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
-import {PRIMARY_COLOR, SECONDARY_COLOR, THIRD_COLOR, FOURTH_COLOR} from '../styles/constant';
+import {SECONDARY_COLOR} from '../styles/constant';
 
 export default function Card({item}) {
   return (
-    <View>
-      <View style={styleslocal.wrapper}>
+    <View style={styleslocal.wrapper}>
+      <View style={styleslocal.wrapper1}>
         <View style={styleslocal.picture}>
           <Image />
         </View>
@@ -13,9 +13,9 @@ export default function Card({item}) {
           <Text style={styleslocal.font}>{item.name}</Text>
           <Text style={styleslocal.font}>{item.transType}</Text>
         </View>
-        <View>
-          <Text style={styleslocal.font}>{item.amount}</Text>
-        </View>
+      </View>
+      <View>
+        <Text style={styleslocal.font}>{item.amount}</Text>
       </View>
     </View>
   );
@@ -23,12 +23,16 @@ export default function Card({item}) {
 const styleslocal = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     borderRadius: 15,
     backgroundColor: SECONDARY_COLOR,
     height: 70,
     alignItems: 'center',
+    paddingHorizontal: 15,
     marginVertical: 5,
+  },
+  wrapper1: {
+    flexDirection: 'row',
   },
   name: {
     flexDirection: 'column',
@@ -40,5 +44,7 @@ const styleslocal = StyleSheet.create({
     height: 50,
     width: 50,
     backgroundColor: 'white',
+    borderRadius: 15,
+    marginRight: 20,
   },
 });

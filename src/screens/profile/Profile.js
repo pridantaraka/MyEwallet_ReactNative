@@ -1,4 +1,11 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {
   PRIMARY_COLOR,
@@ -6,13 +13,11 @@ import {
   THIRD_COLOR,
   FOURTH_COLOR,
 } from '../../styles/constant';
-import styles from '../../styles/global';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {CardName} from '../../components/CardMenu';
 
 const Profile = ({navigation}) => {
   return (
-    <View style={styleslocal.wrapper}>
+    <ScrollView style={styleslocal.wrapper}>
       <View>
         <Text style={styleslocal.text1}>
           We got your personal information from the sign up proccess. If you
@@ -22,10 +27,10 @@ const Profile = ({navigation}) => {
       <CardName headname="First Name" contentname="My Name Is" />
       <CardName headname="Last Name" contentname="My Name Is" />
       <CardName headname="Verified E-mail" contentname="My Name Is" />
-      <TouchableOpacity onPress={() => navigation.navigate('Profilemenu')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Add Phone')}>
         <CardName headname="Phone Number" contentname="Add phone Number" />
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 

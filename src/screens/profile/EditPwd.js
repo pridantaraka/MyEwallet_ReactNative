@@ -1,4 +1,11 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {
   PRIMARY_COLOR,
@@ -12,37 +19,39 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const EditPwd = ({navigation}) => {
   return (
-    <View style={styleslocal.wrapper}>
+    <ScrollView style={styleslocal.wrapper}>
       <View>
-        <Text style={styleslocal.text1}>
-          You must enter your current password and then type your new password
-          twice.
-        </Text>
-      </View>
-      <View style={styleslocal.inputWrapper}>
-        <InputLogin
-          type="Create New Password"
-          placeholder="Current Password"
-          icon="lock-closed-outline"
-          secure={true}
-        />
-      </View>
-      <View style={styleslocal.inputWrapper}>
-        <InputLogin
-          type="Create New Password"
-          placeholder="New Password"
-          icon="lock-closed-outline"
-          secure={true}
-        />
-      </View>
-      <View style={styleslocal.inputWrapper}>
-        <InputLogin
-          type="Create New Password"
-          placeholder="Repeat Password"
-          icon="lock-closed-outline"
-          secure={true}
-        />
         <View>
+          <Text style={styleslocal.text1}>
+            You must enter your current password and then type your new password
+            twice.
+          </Text>
+        </View>
+        <View style={styleslocal.inputWrapper}>
+          <InputLogin
+            type="Create New Password"
+            placeholder="Current Password"
+            icon="lock-closed-outline"
+            secure={true}
+          />
+        </View>
+        <View style={styleslocal.inputWrapper}>
+          <InputLogin
+            type="Create New Password"
+            placeholder="New Password"
+            icon="lock-closed-outline"
+            secure={true}
+          />
+        </View>
+        <View style={styleslocal.inputWrapper}>
+          <InputLogin
+            type="Create New Password"
+            placeholder="Repeat Password"
+            icon="lock-closed-outline"
+            secure={true}
+          />
+        </View>
+        <View style={styles.footer}>
           <TouchableOpacity
             style={styles.Button}
             onPress={() => navigation.navigate('Profilemenu')}>
@@ -50,7 +59,7 @@ const EditPwd = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

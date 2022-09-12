@@ -8,9 +8,21 @@ import {
 } from './constant';
 
 const styles = StyleSheet.create({
+  header: {},
+  content: {
+    height: Dimensions.get('screen').height,
+  },
+  contentTrans: {
+    height: Dimensions.get('screen').height / 2,
+  },
+  footer: {
+    height: 150,
+    justifyContent: 'center',
+  },
   wrapper: {
     height: Dimensions.get('screen').height,
-    marginTop: 20,
+    marginTop: 30,
+    marginHorizontal: 15,
   },
   wrapperName: {
     flexDirection: 'column',
@@ -18,7 +30,7 @@ const styles = StyleSheet.create({
   wrapHistory: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    margin: 20,
+    marginVertical: 20,
   },
   historyName: {
     flexDirection: 'row',
@@ -49,6 +61,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     backgroundColor: PRIMARY_COLOR,
+    borderRadius: 15,
   },
   font1: {
     fontWeight: '800',
@@ -56,6 +69,8 @@ const styles = StyleSheet.create({
     color: PRIMARY_COLOR,
   },
   font2: {
+    fontSize: 16,
+    fontWeight: '400',
     color: 'white',
   },
   font3: {
@@ -64,10 +79,25 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   font4: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: 'white',
+  },
+  font5: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: 'white',
+  },
+  font6: {
     fontWeight: '800',
     fontSize: 18,
     color: PRIMARY_COLOR,
     textAlign: 'center',
+  },
+  font7: {
+    fontWeight: '400',
+    fontSize: 16,
+    color: PRIMARY_COLOR,
   },
 });
 

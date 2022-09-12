@@ -14,29 +14,22 @@ import {
 } from '../../styles/constant';
 import React from 'react';
 import InputTrans from '../../components/InputTrans';
+import {CardTransfer} from '../../components/CardMenu';
 
 const Topup = ({navigation}) => {
   return (
     <ScrollView style={styles.wrapper}>
-      <View style={styles.wrapHistory}>
-        <View>
-          <Text style={styles.font4}>Top Up</Text>
+      <CardTransfer name="My Name is" phone="08123124" />
+      <View style={styles.contentTrans}>
+        <View style={styleslocal.moneyHave}>
+          <Text style={styleslocal.fontTrans}>Rp. 120.000 Avaliable</Text>
         </View>
-      </View>
-      <View style={styleslocal.TransName}>
-        <View style={styleslocal.PadTrans} />
-        <View style={styles.wrapperName}>
-          <Text>Name</Text>
-          <Text>Phone Number</Text>
+        <View style={styleslocal.MarginInput}>
+          <InputTrans type="numeric" placeholder="0.00" />
         </View>
+        <View />
       </View>
-      <View style={styleslocal.moneyHave}>
-        <Text style={styleslocal.fontTrans}>Rp. 120.000 Avaliable</Text>
-      </View>
-      <View style={styleslocal.MarginInput}>
-        <InputTrans type="numeric" placeholder="0.00" />
-      </View>
-      <View>
+      <View style={styles.footer}>
         <TouchableOpacity
           style={styles.Button}
           onPress={() => navigation.navigate('Dashboard')}>

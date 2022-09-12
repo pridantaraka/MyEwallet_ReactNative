@@ -16,7 +16,7 @@ import Data from '../../assets/Data';
 const Transaction = ({navigation}) => {
   return (
     <ScrollView style={styles.wrapper}>
-      <View>
+      <View style={styles.content}>
         <View style={styleslocal.BalanceBox}>
           <View style={styleslocal.BoxSpace}>
             <View>
