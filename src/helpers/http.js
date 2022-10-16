@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const url = 'fw9-backend-seven.vercel.app';
-
 const http = token => {
   const headers = {};
   if (token) {
@@ -9,7 +7,7 @@ const http = token => {
   }
   return axios.create({
     headers,
-    baseURL: url,
+    baseURL: 'https://fw9-backend-seven.vercel.app',
   });
 };
 

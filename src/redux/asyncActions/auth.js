@@ -3,18 +3,24 @@ import http from '../../helpers/http';
 import qs from 'qs';
 
 export const login = createAsyncThunk('auth/login', async request => {
-  const results = {};
+  const result = {};
+  console.log('ini request', request);
   try {
     const send = qs.stringify(request);
-    console.log(send);
-    const {data} = await http().post('auth/login', send);
-    console.log(data);
-    results.data = data.results;
-    results.message = data.message;
-    return results;
+    const {data} = await http().post('/auth/login', send, {
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    });
+    result.successMsg = data.message;
+    result.token = data.result[0].token;
+    result.pin = data.result[0].pin;
+    result.id = data.result[0].id;
+    return result;
   } catch (e) {
-    results.error = e.response.data.message;
-    return results;
+    console.log('login gagal');
+    result.errorMsg = e.response.data.message;
+    return result;
   }
 });
 

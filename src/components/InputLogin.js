@@ -28,7 +28,7 @@ const InputLogin = ({
           placeholder={placeholder}
           keyboardType={type}
           secureTextEntry={!showText}
-          onChange={onChange}
+          onChangeText={onChange}
           value={value}
           defaultValue={defaultValue}
         />
