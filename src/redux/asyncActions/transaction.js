@@ -17,3 +17,25 @@ export const historyTransaction = createAsyncThunk(
     }
   },
 );
+
+export const TopupBalance = createAsyncThunk(
+  'transaction/topup',
+  async request => {
+    const result = {};
+    console.log('ini request', request);
+    try {
+      const send = qs.stringify(request.data);
+      const {data} = await http(request.token).patch('/topup', send, {
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+      });
+      console.log('data asyc action', data);
+      result.successMsg = data.message;
+      return result;
+    } catch (e) {
+      result.errorMsg = e.response.data.message;
+      return result;
+    }
+  },
+);

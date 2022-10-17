@@ -1,10 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {historyTransaction} from '../asyncActions/transaction';
+import {historyTransaction, TopupBalance} from '../asyncActions/transaction';
 
 const initialState = {
   data: [],
   // getIdUser: {},
   dataTransfer: {},
+  dataTopup: {},
 };
 
 const transaction = createSlice({
@@ -19,8 +20,13 @@ const transaction = createSlice({
     build.addCase(historyTransaction.fulfilled, (state, action) => {
       state.data = action.payload.results;
     });
+    build.addCase(TopupBalance.fulfilled, (state, action) => {
+      state.dataTopup = action.payload.results;
+      state.errorMsg = action.payload?.errorMsg;
+      state.successMsg = action.payload?.successMsg;
+    });
   },
 });
 export const {selectRecipient} = transaction.actions;
-export {historyTransaction};
+export {historyTransaction, TopupBalance};
 export default transaction.reducer;
