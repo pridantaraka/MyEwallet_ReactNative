@@ -14,54 +14,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useState, useEffect} from 'react';
 import imagebg from '../../assets/images/polabg.jpg';
 
-// const FormLogin = ({errors, handleChange, handleSubmit, navigation}) => {
-//   return (
-//     <>
-//       <View style={styles.inputWrapper}>
-//         <InputLogin
-//           type="email-address"
-//           placeholder="Email"
-//           icon="mail-outline"
-//           onChange={handleChange}
-//         />
-//       </View>
-//       <View style={styles.inputWrapper}>
-//         <InputLogin
-//           type="password"
-//           placeholder="Password"
-//           icon="lock-closed-outline"
-//           onChange={handleChange}
-//           secure={true}
-//         />
-//       </View>
-//       <View style={styles.inputWrapper}>
-//         <TouchableOpacity onPress={() => navigation.navigate('ForgetPwd')}>
-//           <Text style={styles.fontForgot}>Forgot Password?</Text>
-//         </TouchableOpacity>
-//       </View>
-//       <View style={styles.buttonWrapper}>
-//         <TouchableOpacity onPress={handleSubmit}>
-//           <View style={styles.button}>
-//             <Text style={styles.buttonText}>Login</Text>
-//           </View>
-//         </TouchableOpacity>
-//       </View>
-//       <View style={styles.inputWrapper}>
-//         <Text style={styles.fontP}>
-//           Don`t have an account? Let`s
-//           <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-//             <Text> Sign Up </Text>
-//           </TouchableOpacity>
-//         </Text>
-//       </View>
-//     </>
-//   );
-// };
-
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // console.log('ini password ', password);
   const dispatch = useDispatch();
   const [showText, setShow] = React.useState(false);
   const data = {
@@ -70,13 +25,8 @@ const Login = ({navigation}) => {
   };
 
   const onLogin = () => {
-    // console.log('ini data', data);
     dispatch(login(data));
   };
-
-  // React.useEffect(() => {
-  //   dispatch(navigation());
-  // },[]);
 
   return (
     <>
@@ -99,14 +49,6 @@ const Login = ({navigation}) => {
             </View>
             <View>
               <View style={styles.inputWrapper}>
-                {/* <InputLogin
-                  name="email"
-                  type="email-address"
-                  placeholder="Email"
-                  icon="mail-outline"
-                  onChangeText={emailNew => setEmail(emailNew)}
-                  initialValue={email}
-                /> */}
                 <TextInput
                   type="email-address"
                   placeholder="Email"
@@ -115,15 +57,6 @@ const Login = ({navigation}) => {
                 />
               </View>
               <View style={styles.inputWrapper}>
-                {/* <InputLogin
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  icon="lock-closed-outline"
-                  onChangeText={passwordNew => setPassword(passwordNew)}
-                  initialValue={password}
-                  secure={true}
-                /> */}
                 <TextInput
                   placeholder="Enter your password"
                   scure={true}

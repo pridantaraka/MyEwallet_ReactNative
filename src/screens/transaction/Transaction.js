@@ -10,63 +10,76 @@ import styles from '../../styles/global';
 import {SECONDARY_COLOR, THIRD_COLOR} from '../../styles/constant';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Card from '../../components/Card';
-import Data from '../../assets/Data';
+import {CardContact} from '../../components/Card';
+// import Data from '../../assets/Data';
+import {userContact} from '../../redux/asyncActions/profile';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Transaction = ({navigation}) => {
+  const dispatch = useDispatch();
+  const Contact = useSelector(state => state.profile.data);
+  const token = useSelector(state => state.auth.token);
+  const [limit, setLimit] = React.useState(5);
+  console.log('ini data history', Contact);
+  React.useEffect(() => {
+    dispatch(userContact({token, limit}));
+  }, [token, limit, dispatch]);
+
   return (
-    <ScrollView style={styles.wrapper}>
-      <View style={styles.content}>
-        <View style={styleslocal.BalanceBox}>
-          <View style={styleslocal.BoxSpace}>
-            <View>
-              <Icon name="arrow-down" size={20} style={{color: 'green'}} />
+    <>
+      <ScrollView style={styles.wrapper}>
+        <View style={styles.content}>
+          <View style={styleslocal.BalanceBox}>
+            <View style={styleslocal.BoxSpace}>
+              <View>
+                <Icon name="arrow-down" size={20} style={{color: 'green'}} />
+              </View>
+              <View>
+                <Text>Balance</Text>
+              </View>
+              <View>
+                <Text style={styles.font3}>Rp. 1.000.000</Text>
+              </View>
             </View>
-            <View>
-              <Text>Balance</Text>
-            </View>
-            <View>
-              <Text style={styles.font3}>Rp. 1.000.000</Text>
+            <View style={styleslocal.BoxSpace}>
+              <View>
+                <Icon name="arrow-up" size={20} style={{color: 'red'}} />
+              </View>
+              <View>
+                <Text>Expensive</Text>
+              </View>
+              <View>
+                <Text style={styles.font3}>Rp. 500.000</Text>
+              </View>
             </View>
           </View>
-          <View style={styleslocal.BoxSpace}>
+          <View style={styles.wrapHistory}>
             <View>
-              <Icon name="arrow-up" size={20} style={{color: 'red'}} />
+              <Text>Transaction History</Text>
             </View>
             <View>
-              <Text>Expensive</Text>
-            </View>
-            <View>
-              <Text style={styles.font3}>Rp. 500.000</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('History')}>
+                <Text>See All</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </View>
-        <View style={styles.wrapHistory}>
           <View>
-            <Text>Transaction History</Text>
-          </View>
-          <View>
-            <TouchableOpacity onPress={() => navigation.navigate('History')}>
-              <Text>See All</Text>
-            </TouchableOpacity>
+            <FlatList
+              data={Contact}
+              renderItem={({item}) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('Transfer')}>
+                    <CardContact item={item} />
+                  </TouchableOpacity>
+                );
+              }}
+              keyExtractor={item => String(item.id_user)}
+            />
           </View>
         </View>
-        <View>
-          <FlatList
-            data={Data}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Transfer')}>
-                  <Card item={item} />
-                </TouchableOpacity>
-              );
-            }}
-            keyExtractor={item => String(item.id)}
-          />
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 const styleslocal = StyleSheet.create({

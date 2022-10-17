@@ -17,13 +17,22 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import styles from '../../styles/global';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Card from '../../components/Card';
+import {CardHistory} from '../../components/Card';
 import Data from '../../assets/Data';
 import {CardProfile} from '../../components/CardMenu';
-
+import {historyTransaction} from '../../redux/asyncActions/transaction';
+import {useSelector, useDispatch} from 'react-redux';
 const BottomTab = createBottomTabNavigator();
 
 const Dashboard = ({navigation}) => {
+  const dispatch = useDispatch();
+  const dataHistory = useSelector(state => state.transaction.data);
+  const token = useSelector(state => state.auth.token);
+  const [limit, setLimit] = React.useState(5);
+  const [sortType, setSortType] = React.useState('ASC');
+  React.useEffect(() => {
+    dispatch(historyTransaction({token, limit, sortType}));
+  }, [token, limit, sortType, dispatch]);
   return (
     <>
       <ScrollView style={styles.wrapper}>
@@ -85,16 +94,16 @@ const Dashboard = ({navigation}) => {
               </View>
             </View>
             <FlatList
-              data={Data}
+              data={dataHistory}
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity
                     onPress={() => navigation.navigate('Transfer')}>
-                    <Card item={item} />
+                    <CardHistory item={item} />
                   </TouchableOpacity>
                 );
               }}
-              keyExtractor={item => String(item.id)}
+              keyExtractor={item => String(item.id_transaction)}
             />
           </View>
         </View>

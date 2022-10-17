@@ -28,7 +28,6 @@ export const auth = createSlice({
       const token = action.payload?.token;
       const pin = action.payload?.pin;
       state.errorMsg = action.payload?.error;
-      console.log('ini reducers', action.payload);
       if (token) {
         state.token = token;
         state.pin = pin;

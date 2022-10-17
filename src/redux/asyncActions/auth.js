@@ -4,7 +4,6 @@ import qs from 'qs';
 
 export const login = createAsyncThunk('auth/login', async request => {
   const result = {};
-  console.log('ini request', request);
   try {
     const send = qs.stringify(request);
     const {data} = await http().post('/auth/login', send, {
@@ -12,13 +11,11 @@ export const login = createAsyncThunk('auth/login', async request => {
         'content-type': 'application/x-www-form-urlencoded',
       },
     });
-    console.log('ini data dari request', data);
     result.successMsg = data.message;
     result.token = data.results.token;
     result.pin = data.results.pin;
     return result;
   } catch (e) {
-    console.log('login gagal');
     result.errorMsg = e.response.data.message;
     return result;
   }

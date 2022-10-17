@@ -11,42 +11,51 @@ import {PRIMARY_COLOR} from '../../styles/constant';
 import styles from '../../styles/global';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CardMenu} from '../../components/CardMenu';
+import {useDispatch} from 'react-redux/es/exports';
+import {logout} from '../../redux/reducers/auth';
 
 const Profilemenu = ({navigation}) => {
+  const dispatch = useDispatch();
+  const onLogout = () => {
+    dispatch(logout());
+  };
   return (
-    <ScrollView style={styles.wrapper}>
-      <View style={styleslocal.wrapper}>
-        <View style={styleslocal.picture}>
-          <Image />
+    <>
+      <ScrollView style={styles.wrapper}>
+        <View style={styleslocal.wrapper}>
+          <View style={styleslocal.picture}>
+            <Image />
+          </View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+              <Text>
+                <Icon name="pencil" />
+                Edit
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text style={styleslocal.text1}>My Name is</Text>
+          </View>
+          <View>
+            <Text style={styleslocal.text1}>+62 8121 2839 9231</Text>
+          </View>
         </View>
-        <View>
-          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-            <Text>
-              <Icon name="pencil" />
-              Edit
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <Text style={styleslocal.text1}>My Name is</Text>
-        </View>
-        <View>
-          <Text style={styleslocal.text1}>+62 8121 2839 9231</Text>
-        </View>
-      </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Personal Info')}>
-        <CardMenu menu="Personal Information" icon="caret-forward" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Change Password')}>
-        <CardMenu menu="Change Password" icon="caret-forward" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
-        <CardMenu menu="Change Pin" icon="caret-forward" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <CardMenu menu="Logout" />
-      </TouchableOpacity>
-    </ScrollView>
+        <TouchableOpacity onPress={() => navigation.navigate('Personal Info')}>
+          <CardMenu menu="Personal Information" icon="caret-forward" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Change Password')}>
+          <CardMenu menu="Change Password" icon="caret-forward" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
+          <CardMenu menu="Change Pin" icon="caret-forward" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onLogout}>
+          <CardMenu menu="Logout" />
+        </TouchableOpacity>
+      </ScrollView>
+    </>
   );
 };
 

@@ -13,7 +13,6 @@ const Stack = createNativeStackNavigator();
 
 const Main = () => {
   const token = useSelector(state => state.auth.token);
-  console.log('ini token main', token);
   return (
     <NavigationContainer>
       <Stack.Navigator>
