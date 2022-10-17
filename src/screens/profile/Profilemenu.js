@@ -11,7 +11,7 @@ import {PRIMARY_COLOR} from '../../styles/constant';
 import styles from '../../styles/global';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CardMenu} from '../../components/CardMenu';
-import {useDispatch} from 'react-redux/es/exports';
+import {useDispatch} from 'react-redux';
 import {logout} from '../../redux/reducers/auth';
 
 const Profilemenu = ({navigation}) => {
