@@ -5,14 +5,14 @@ import {
   ImageBackground,
   ScrollView,
   Alert,
+  TextInput,
 } from 'react-native';
 import React from 'react';
 import styles from '../../styles/auth';
-import InputLogin from '../../components/InputLogin';
-import imagebg from '../../assets/images/polabg.jpg';
 import {login} from '../../redux/asyncActions/auth';
 import {useDispatch, useSelector} from 'react-redux';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import imagebg from '../../assets/images/polabg.jpg';
 
 // const FormLogin = ({errors, handleChange, handleSubmit, navigation}) => {
 //   return (
@@ -70,9 +70,13 @@ const Login = ({navigation}) => {
   };
 
   const onLogin = () => {
-    console.log('ini data', data);
+    // console.log('ini data', data);
     dispatch(login(data));
   };
+
+  // React.useEffect(() => {
+  //   dispatch(navigation());
+  // },[]);
 
   return (
     <>
@@ -95,17 +99,23 @@ const Login = ({navigation}) => {
             </View>
             <View>
               <View style={styles.inputWrapper}>
-                <InputLogin
+                {/* <InputLogin
                   name="email"
                   type="email-address"
                   placeholder="Email"
                   icon="mail-outline"
                   onChangeText={emailNew => setEmail(emailNew)}
                   initialValue={email}
+                /> */}
+                <TextInput
+                  type="email-address"
+                  placeholder="Email"
+                  onChangeText={emailNew => setEmail(emailNew)}
+                  initialValue={email}
                 />
               </View>
               <View style={styles.inputWrapper}>
-                <InputLogin
+                {/* <InputLogin
                   name="password"
                   type="password"
                   placeholder="Password"
@@ -113,6 +123,13 @@ const Login = ({navigation}) => {
                   onChangeText={passwordNew => setPassword(passwordNew)}
                   initialValue={password}
                   secure={true}
+                /> */}
+                <TextInput
+                  placeholder="Enter your password"
+                  scure={true}
+                  onChangeText={passwordNew => setPassword(passwordNew)}
+                  initialValue={password}
+                  secureTextEntry={!showText}
                 />
               </View>
               <View style={styles.inputWrapper}>

@@ -12,10 +12,10 @@ export const login = createAsyncThunk('auth/login', async request => {
         'content-type': 'application/x-www-form-urlencoded',
       },
     });
+    console.log('ini data dari request', data);
     result.successMsg = data.message;
-    result.token = data.result[0].token;
-    result.pin = data.result[0].pin;
-    result.id = data.result[0].id;
+    result.token = data.results.token;
+    result.pin = data.results.pin;
     return result;
   } catch (e) {
     console.log('login gagal');

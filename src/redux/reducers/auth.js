@@ -3,7 +3,6 @@ import {login, register} from '../asyncActions/auth';
 
 const initialState = {
   token: null,
-  id: null,
   errorMsg: null,
   successMsg: null,
   deviceToken: null,
@@ -28,12 +27,11 @@ export const auth = createSlice({
     build.addCase(login.fulfilled, (state, action) => {
       const token = action.payload?.token;
       const pin = action.payload?.pin;
-      const id = action.payload?.id;
       state.errorMsg = action.payload?.error;
+      console.log('ini reducers', action.payload);
       if (token) {
         state.token = token;
         state.pin = pin;
-        state.id = id;
       } else {
         state.errorMsg = action.payload?.errorMsg;
         state.successMsg = action.payload?.successMsg;
@@ -44,4 +42,4 @@ export const auth = createSlice({
 
 export default auth.reducer;
 export {login};
-export const {logOut, saveToken} = auth.actions;
+export const {logout, saveToken} = auth.actions;

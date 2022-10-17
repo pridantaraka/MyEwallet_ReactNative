@@ -7,7 +7,7 @@ const http = token => {
   }
   return axios.create({
     headers,
-    baseURL: 'https://fw9-backend-seven.vercel.app',
+    baseURL: 'https://fw9-backend-seven.vercel.app/',
   });
 };
 
