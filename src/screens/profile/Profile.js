@@ -14,8 +14,16 @@ import {
   FOURTH_COLOR,
 } from '../../styles/constant';
 import {CardName} from '../../components/CardMenu';
+import {useDispatch, useSelector} from 'react-redux';
+import {ProfileDetail} from '../../redux/asyncActions/profile';
 
 const Profile = ({navigation}) => {
+  const dispatch = useDispatch();
+  const profileInfo = useSelector(state => state.profile.detailProfile);
+  const token = useSelector(state => state.auth.token);
+  React.useEffect(() => {
+    dispatch(ProfileDetail(token));
+  }, [token, dispatch]);
   return (
     <ScrollView style={styleslocal.wrapper}>
       <View>
@@ -24,11 +32,14 @@ const Profile = ({navigation}) => {
           want to make changes on your information, contact our support.
         </Text>
       </View>
-      <CardName headname="First Name" contentname="My Name Is" />
-      <CardName headname="Last Name" contentname="My Name Is" />
-      <CardName headname="Verified E-mail" contentname="My Name Is" />
+      <CardName headname="First Name" contentname={profileInfo.fullname} />
+      <CardName headname="Username" contentname={profileInfo.username} />
+      <CardName headname="Verified E-mail" contentname={profileInfo.email} />
       <TouchableOpacity onPress={() => navigation.navigate('Add Phone')}>
-        <CardName headname="Phone Number" contentname="Add phone Number" />
+        <CardName
+          headname="Phone Number"
+          contentname={profileInfo.phonenumber}
+        />
       </TouchableOpacity>
     </ScrollView>
   );

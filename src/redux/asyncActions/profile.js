@@ -16,3 +16,18 @@ export const userContact = createAsyncThunk(
     }
   },
 );
+
+export const ProfileDetail = createAsyncThunk(
+  'profile/profileDetail',
+  async token => {
+    const result = {};
+    try {
+      const {data} = await http(token).get('/status');
+      console.log('data profile', data);
+      return data;
+    } catch (e) {
+      result.message = e.response.data.message;
+      return result;
+    }
+  },
+);

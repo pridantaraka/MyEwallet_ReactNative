@@ -18,27 +18,29 @@ import styles from '../../styles/global';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CardHistory} from '../../components/Card';
-import Data from '../../assets/Data';
 import {CardProfile} from '../../components/CardMenu';
 import {historyTransaction} from '../../redux/asyncActions/transaction';
 import {useSelector, useDispatch} from 'react-redux';
+import {ProfileDetail} from '../../redux/asyncActions/profile';
 const BottomTab = createBottomTabNavigator();
 
 const Dashboard = ({navigation}) => {
   const dispatch = useDispatch();
+  const profileInfo = useSelector(state => state.profile.detailProfile);
   const dataHistory = useSelector(state => state.transaction.data);
   const token = useSelector(state => state.auth.token);
   const [limit, setLimit] = React.useState(5);
   const [sortType, setSortType] = React.useState('ASC');
   React.useEffect(() => {
     dispatch(historyTransaction({token, limit, sortType}));
+    dispatch(ProfileDetail(token));
   }, [token, limit, sortType, dispatch]);
   return (
     <>
       <ScrollView style={styles.wrapper}>
         <TouchableOpacity onPress={() => navigation.navigate('Profilemenu')}>
           <CardProfile
-            name="My name Is"
+            name={profileInfo.fullname}
             greeting="hello,"
             icon="notifications-outline"
           />
@@ -50,10 +52,10 @@ const Dashboard = ({navigation}) => {
                 <Text>Balance</Text>
               </View>
               <View>
-                <Text style={styleslocal.font1}>Rp. 120.000</Text>
+                <Text style={styleslocal.font1}>Rp.{profileInfo?.balance}</Text>
               </View>
               <View>
-                <Text>Phone Number</Text>
+                <Text>{profileInfo.phonenumber}</Text>
               </View>
             </View>
             <View style={styleslocal.WrapperBetwen}>

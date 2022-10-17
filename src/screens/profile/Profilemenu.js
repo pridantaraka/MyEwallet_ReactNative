@@ -11,14 +11,20 @@ import {PRIMARY_COLOR} from '../../styles/constant';
 import styles from '../../styles/global';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CardMenu} from '../../components/CardMenu';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {logout} from '../../redux/reducers/auth';
+import {ProfileDetail} from '../../redux/asyncActions/profile';
 
 const Profilemenu = ({navigation}) => {
   const dispatch = useDispatch();
+  const profileInfo = useSelector(state => state.profile.detailProfile);
+  const token = useSelector(state => state.auth.token);
   const onLogout = () => {
     dispatch(logout());
   };
+  React.useEffect(() => {
+    dispatch(ProfileDetail(token));
+  }, [token, dispatch]);
   return (
     <>
       <ScrollView style={styles.wrapper}>
@@ -35,10 +41,10 @@ const Profilemenu = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View>
-            <Text style={styleslocal.text1}>My Name is</Text>
+            <Text style={styleslocal.text1}>{profileInfo.fullname}</Text>
           </View>
           <View>
-            <Text style={styleslocal.text1}>+62 8121 2839 9231</Text>
+            <Text style={styleslocal.text1}>{profileInfo.phonenumber}</Text>
           </View>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Personal Info')}>
