@@ -53,15 +53,9 @@ const Topup = ({navigation}) => {
 
   const onTopup = () => {
     dispatch(TopupBalance({data, token}));
-    // dispatch(ProfileDetail(token));
     dispatch(alertPopup);
     navigation.navigate('Dashboard');
   };
-  // const onClick = value => {
-  //   const amount = parseInt(value.balance);
-  //   const data = {balance: amount, type_id, time_transaction};
-  //   dispatch(TopupBalance({data, token}));
-  // };
 
   React.useEffect(() => {
     dispatch(ProfileDetail(token));
