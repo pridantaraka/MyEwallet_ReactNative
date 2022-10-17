@@ -34,7 +34,26 @@ export const CardHistory = ({item}) => {
           </View>
         </View>
         <View>
-          <Text style={styleslocal.font}>{item.amount}</Text>
+          <Text style={styleslocal.font}>
+            {/* {item.amount} */}
+            {item.recipient_id !== item.sender_id ? (
+              <Text style={{color: 'red'}}>
+                -
+                {new Intl.NumberFormat('id-ID', {
+                  style: 'currency',
+                  currency: 'IDR',
+                }).format(parseInt(item.amount || 0))}
+              </Text>
+            ) : (
+              <Text style={{color: 'green'}}>
+                +
+                {new Intl.NumberFormat('id-ID', {
+                  style: 'currency',
+                  currency: 'IDR',
+                }).format(parseInt(item.amount || 0))}
+              </Text>
+            )}
+          </Text>
         </View>
       </View>
     </>
