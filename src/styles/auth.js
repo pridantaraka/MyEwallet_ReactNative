@@ -12,6 +12,13 @@ const styles = StyleSheet.create({
     height: Dimensions.get('screen').height,
     overflow: 'hidden',
   },
+  inputText: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    elevation: 3,
+    flexDirection: 'row',
+    height: 50,
+  },
   fontP: {
     fontWeight: '400',
     fontSize: 16,

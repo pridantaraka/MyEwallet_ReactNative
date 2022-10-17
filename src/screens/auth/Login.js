@@ -50,6 +50,7 @@ const Login = ({navigation}) => {
             <View>
               <View style={styles.inputWrapper}>
                 <TextInput
+                  style={styles.inputText}
                   type="email-address"
                   placeholder="Email"
                   onChangeText={emailNew => setEmail(emailNew)}
@@ -58,6 +59,7 @@ const Login = ({navigation}) => {
               </View>
               <View style={styles.inputWrapper}>
                 <TextInput
+                  style={styles.inputText}
                   placeholder="Enter your password"
                   scure={true}
                   onChangeText={passwordNew => setPassword(passwordNew)}
