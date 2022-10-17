@@ -79,12 +79,6 @@ const Topup = ({navigation}) => {
           </Text>
         </View>
         <View style={styleslocal.MarginInput}>
-          {/* <InputTrans
-            name="balance"
-            type="numeric"
-            placeholder="0.00"
-            value={values.balance}
-          /> */}
           <TextInput
             placeholder="0.00"
             keyboardType="numeric"
