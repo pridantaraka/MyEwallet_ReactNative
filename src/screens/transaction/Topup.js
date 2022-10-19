@@ -80,6 +80,14 @@ const Topup = ({navigation}) => {
         </View>
         <View style={styleslocal.MarginInput}>
           <TextInput
+            style={{
+              borderBottom: 'none',
+              borderBottomColor: SECONDARY_COLOR,
+              fontSize: 42,
+              color: PRIMARY_COLOR,
+              fontWeight: '900',
+              textAlign: 'center',
+            }}
             placeholder="0.00"
             keyboardType="numeric"
             onChangeText={balanceNew => setBalance(balanceNew)}

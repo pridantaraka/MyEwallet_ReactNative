@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  TextInput,
 } from 'react-native';
 import styles from '../../styles/global';
 import {
@@ -18,9 +19,12 @@ import {CardTransfer} from '../../components/CardMenu';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserById} from '../../redux/asyncActions/transaction';
 import {inputAmount} from '../../redux/reducers/transaction';
+import {useState} from 'react';
 
 const Transfer = ({navigation}) => {
   const dispatch = useDispatch();
+  const [amount, setAmount] = useState('');
+  const [note, setNote] = useState('');
   const recipient_id = useSelector(state => state.transaction.dataTransfer);
   const id_recipient = recipient_id.recipient_id;
   const userSelect = useSelector(state => state.transaction.dataRecipient);
@@ -30,6 +34,32 @@ const Transfer = ({navigation}) => {
   React.useEffect(() => {
     dispatch(getUserById({token, id_recipient}));
   }, [id_recipient]);
+
+  var currentdate = new Date();
+  var date =
+    currentdate.getFullYear() +
+    '-' +
+    (currentdate.getMonth() + 1) +
+    '-' +
+    currentdate.getDate();
+  var time =
+    currentdate.getHours() +
+    ':' +
+    currentdate.getMinutes() +
+    ':' +
+    currentdate.getSeconds();
+
+  const data = {
+    amount,
+    note,
+    time,
+    date,
+  };
+
+  const onInputAmount = () => {
+    dispatch(inputAmount(data));
+    navigation.navigate('Confrim');
+  };
 
   return (
     <ScrollView style={styles.wrapper}>
@@ -52,20 +82,37 @@ const Transfer = ({navigation}) => {
           </Text>
         </View>
         <View style={styleslocal.MarginInput}>
-          <InputTrans type="numeric" placeholder="0.00" />
+          <TextInput
+            style={{
+              borderBottomWidth: 2,
+              borderBottomColor: SECONDARY_COLOR,
+              fontSize: 42,
+              color: PRIMARY_COLOR,
+              fontWeight: '900',
+              textAlign: 'center',
+            }}
+            placeholder="0.00"
+            keyboardType="numeric"
+            onChangeText={newAmount => setAmount(newAmount)}
+            defaultValue={amount}
+          />
         </View>
         <View>
-          <InputTrans
-            icon="pencil"
-            type="text"
-            placeholder="For buying some socks"
+          <TextInput
+            style={{
+              fontWeight: '400',
+              textAlign: 'center',
+              backgroundColor: 'white',
+              borderRadius: 10,
+            }}
+            placeholder="Add some notes"
+            onChangeText={newNote => setNote(newNote)}
+            defaultValue={note}
           />
         </View>
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity
-          style={styles.Button}
-          onPress={() => navigation.navigate('Confrim')}>
+        <TouchableOpacity style={styles.Button} onPress={onInputAmount}>
           <Text style={styles.font2}>Confirm</Text>
         </TouchableOpacity>
       </View>
