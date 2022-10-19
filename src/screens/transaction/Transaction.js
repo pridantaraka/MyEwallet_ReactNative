@@ -14,13 +14,13 @@ import {CardContact} from '../../components/Card';
 // import Data from '../../assets/Data';
 import {userContact} from '../../redux/asyncActions/profile';
 import {useDispatch, useSelector} from 'react-redux';
+import {selectRecipient} from '../../redux/reducers/transaction';
 
 const Transaction = ({navigation}) => {
   const dispatch = useDispatch();
   const Contact = useSelector(state => state.profile.data);
   const token = useSelector(state => state.auth.token);
   const [limit, setLimit] = React.useState(5);
-  console.log('ini data history', Contact);
   React.useEffect(() => {
     dispatch(userContact({token, limit}));
   }, [token, limit, dispatch]);
@@ -69,7 +69,10 @@ const Transaction = ({navigation}) => {
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('Transfer')}>
+                    onPress={() => {
+                      dispatch(selectRecipient(item.id_user));
+                      navigation.navigate('Transfer');
+                    }}>
                     <CardContact item={item} />
                   </TouchableOpacity>
                 );

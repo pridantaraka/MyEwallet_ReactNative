@@ -15,16 +15,41 @@ import {
 import React from 'react';
 import InputTrans from '../../components/InputTrans';
 import {CardTransfer} from '../../components/CardMenu';
+import {useDispatch, useSelector} from 'react-redux';
+import {getUserById} from '../../redux/asyncActions/transaction';
+import {inputAmount} from '../../redux/reducers/transaction';
 
 const Transfer = ({navigation}) => {
+  const dispatch = useDispatch();
+  const recipient_id = useSelector(state => state.transaction.dataTransfer);
+  const id_recipient = recipient_id.recipient_id;
+  const userSelect = useSelector(state => state.transaction.dataRecipient);
+  const profileInfo = useSelector(state => state.profile.detailProfile);
+  const token = useSelector(state => state.auth.token);
+
+  React.useEffect(() => {
+    dispatch(getUserById({token, id_recipient}));
+  }, [id_recipient]);
+
   return (
     <ScrollView style={styles.wrapper}>
       <View>
-        <CardTransfer name="My Name Is" phone="0812314123" />
+        <CardTransfer
+          name={userSelect.fullname || 'dont have name'}
+          phone={userSelect.phonenumber || 'no phone number'}
+        />
       </View>
       <View style={styles.contentTrans}>
         <View style={styleslocal.moneyHave}>
-          <Text style={styleslocal.fontTrans}>Rp. 120.000 Avaliable</Text>
+          <Text style={styleslocal.fontTrans}>
+            {new Intl.NumberFormat('id-ID', {
+              style: 'currency',
+              currency: 'IDR',
+            }).format(
+              parseInt(profileInfo.balance ? profileInfo.balance : '0'),
+            )}{' '}
+            Avaliable
+          </Text>
         </View>
         <View style={styleslocal.MarginInput}>
           <InputTrans type="numeric" placeholder="0.00" />

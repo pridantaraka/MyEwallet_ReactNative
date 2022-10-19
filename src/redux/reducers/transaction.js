@@ -1,11 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {historyTransaction, TopupBalance} from '../asyncActions/transaction';
+import {
+  historyTransaction,
+  TopupBalance,
+  getUserById,
+} from '../asyncActions/transaction';
 
 const initialState = {
   data: [],
-  // getIdUser: {},
   dataTransfer: {},
   dataTopup: {},
+  dataRecipient: {},
+  successMsg: null,
+  errorMsg: null,
 };
 
 const transaction = createSlice({
@@ -13,7 +19,19 @@ const transaction = createSlice({
   initialState,
   reducers: {
     selectRecipient: (state, action) => {
-      state.getIdUser.recipient_id = action.payload;
+      state.dataTransfer.recipient_id = action.payload;
+    },
+    resetMsg: state => {
+      state.successMsg = null;
+      state.errorMsg = null;
+    },
+    inputAmount: (state, action) => {
+      state.dataTransfer.amount = action.payload.amount;
+      state.dataTransfer.note = action.payload.note;
+      state.dataTransfer.time = action.payload.time;
+      state.dataTransfer.date = action.payload.date;
+      state.dataTransfer.pin = action.payload.pin;
+      state.dataTransfer.type_id = action.payload.type_id;
     },
   },
   extraReducers: build => {
@@ -25,8 +43,11 @@ const transaction = createSlice({
       state.errorMsg = action.payload?.errorMsg;
       state.successMsg = action.payload?.successMsg;
     });
+    build.addCase(getUserById.fulfilled, (state, action) => {
+      state.dataRecipient = action.payload.results;
+    });
   },
 });
-export const {selectRecipient} = transaction.actions;
-export {historyTransaction, TopupBalance};
+export const {selectRecipient, inputAmount, resetMsg} = transaction.actions;
+export {historyTransaction, TopupBalance, getUserById};
 export default transaction.reducer;

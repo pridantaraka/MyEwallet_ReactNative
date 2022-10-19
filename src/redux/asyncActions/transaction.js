@@ -39,3 +39,36 @@ export const TopupBalance = createAsyncThunk(
     }
   },
 );
+
+export const getUserById = createAsyncThunk(
+  'transaction/getUserById',
+  async ({token, id_recipient}) => {
+    const result = {};
+    try {
+      const {data} = await http(token).get(`/getUserId/${id_recipient}`);
+      return data;
+    } catch (e) {
+      result.message = e.response.data.message;
+      return result;
+    }
+  },
+);
+
+export const Transfer = createAsyncThunk(
+  'transaction/transfer',
+  async request => {
+    const result = {};
+    try {
+      const send = qs.stringify(request.data);
+      const {data} = await http(request.token).post('/transfer', send, {
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+      });
+      return data;
+    } catch (e) {
+      result.message = e.response.data.message;
+      return result;
+    }
+  },
+);

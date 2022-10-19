@@ -21,7 +21,6 @@ const profile = createSlice({
     });
     build.addCase(ProfileDetail.fulfilled, (state, action) => {
       state.detailProfile = action.payload?.results;
-      console.log('reducer', state.detailProfile);
     });
   },
 });
