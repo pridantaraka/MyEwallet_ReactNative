@@ -53,12 +53,7 @@ const Dashboard = ({navigation}) => {
               </View>
               <View>
                 <Text style={styleslocal.font1}>
-                  {new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                  }).format(
-                    parseInt(profileInfo.balance ? profileInfo.balance : '0'),
-                  )}
+                  Rp. {profileInfo.balance ? profileInfo.balance : '0'}
                 </Text>
               </View>
               <View>

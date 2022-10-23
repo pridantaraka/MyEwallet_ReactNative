@@ -69,13 +69,7 @@ const Topup = ({navigation}) => {
       <View style={styles.contentTrans}>
         <View style={styleslocal.moneyHave}>
           <Text style={styleslocal.fontTrans}>
-            {new Intl.NumberFormat('id-ID', {
-              style: 'currency',
-              currency: 'IDR',
-            }).format(
-              parseInt(profileInfo.balance ? profileInfo.balance : '0'),
-            )}{' '}
-            Avaliable
+            Rp. {profileInfo.balance ? profileInfo.balance : '0'} Avaliable
           </Text>
         </View>
         <View style={styleslocal.MarginInput}>
