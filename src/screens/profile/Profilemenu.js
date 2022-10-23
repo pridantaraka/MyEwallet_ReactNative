@@ -33,7 +33,8 @@ const Profilemenu = ({navigation}) => {
             <Image />
           </View>
           <View>
-            <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Edit Profile')}>
               <Text>
                 <Icon name="pencil" />
                 Edit

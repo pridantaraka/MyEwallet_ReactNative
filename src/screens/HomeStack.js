@@ -14,6 +14,7 @@ import EditPwd from './profile/EditPwd';
 import Contact from './home/Contact';
 import EditPhone from './profile/EditPhone';
 import PinCheck from './transaction/PinCheck';
+import EditProfile from './profile/EditProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ const HomeStack = () => {
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="Add Phone" component={EditPhone} />
         <Stack.Screen name="Pin Confirm" component={PinCheck} />
+        <Stack.Screen name="Edit Profile" component={EditProfile} />
       </Stack.Navigator>
     </>
   );
