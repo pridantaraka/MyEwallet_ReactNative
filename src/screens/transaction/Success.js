@@ -22,6 +22,7 @@ const Success = ({navigation}) => {
   const userSelect = useSelector(state => state.transaction.dataRecipient);
   const dataTransfer = useSelector(state => state.transaction.dataTransfer);
   const profileInfo = useSelector(state => state.profile.detailProfile);
+  const totalbalance = `${profileInfo.balance - dataTransfer.amount}`;
   return (
     <ScrollView style={styles.wrapper}>
       <View style={styles.WrappingTrans}>
@@ -49,7 +50,7 @@ const Success = ({navigation}) => {
         <View style={styleslocal.Box}>
           <Text style={styles.font2}>Balance Left</Text>
           <Text style={styles.font3}>
-            Rp. {profileInfo.balance ? profileInfo.balance : '0'}
+            Rp. {totalbalance ? totalbalance : '0'}
           </Text>
         </View>
       </View>

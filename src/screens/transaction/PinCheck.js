@@ -99,7 +99,6 @@ const PinCheck = ({navigation}) => {
                   type_id: detailInput.type_id,
                   pin: detailInput.pin,
                 };
-                console.log('ini data', data);
                 dispatch(Transfer({data, token}));
                 navigation.navigate('Success');
               } else {

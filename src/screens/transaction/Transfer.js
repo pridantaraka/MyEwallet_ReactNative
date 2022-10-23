@@ -61,8 +61,6 @@ const Transfer = ({navigation}) => {
     pin: CheckPin,
   };
 
-  console.log('data dari transfer', data);
-
   const onInputAmount = () => {
     dispatch(inputAmount(data));
     navigation.navigate('Confrim');
