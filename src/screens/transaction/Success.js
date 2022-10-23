@@ -43,23 +43,13 @@ const Success = ({navigation}) => {
         <View style={styleslocal.Box}>
           <Text style={styles.font2}>Amount</Text>
           <Text style={styles.font3}>
-            {new Intl.NumberFormat('id-ID', {
-              style: 'currency',
-              currency: 'IDR',
-            }).format(
-              parseInt(dataTransfer.amount ? dataTransfer.amount : '0'),
-            )}
+            Rp. {dataTransfer.amount ? dataTransfer.amount : '0'}
           </Text>
         </View>
         <View style={styleslocal.Box}>
           <Text style={styles.font2}>Balance Left</Text>
           <Text style={styles.font3}>
-            {new Intl.NumberFormat('id-ID', {
-              style: 'currency',
-              currency: 'IDR',
-            }).format(
-              parseInt(profileInfo.balance ? profileInfo.balance : '0'),
-            )}
+            Rp. {profileInfo.balance ? profileInfo.balance : '0'}
           </Text>
         </View>
       </View>
