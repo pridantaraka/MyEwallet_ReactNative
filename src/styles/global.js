@@ -53,9 +53,28 @@ const styles = StyleSheet.create({
   WrappingTrans: {
     marginVertical: 25,
   },
+  PinInput: {
+    borderBottomWidth: 1,
+    width: 50,
+  },
   LogoTrans: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: PRIMARY_COLOR,
+    width: (Dimensions.get('screen').width * 90) / 100,
+    paddingVertical: 10,
+    alignItems: 'center',
+    borderRadius: 12,
+    elevation: 3,
+  },
+  buttonText: {
+    color: 'white',
   },
   picture: {
     height: 50,

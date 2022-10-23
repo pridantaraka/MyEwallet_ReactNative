@@ -60,7 +60,7 @@ const Confrim = ({navigation}) => {
       <View style={styles.footer}>
         <TouchableOpacity
           style={styles.Button}
-          onPress={() => navigation.navigate('Success')}>
+          onPress={() => navigation.navigate('Pin Confirm')}>
           <Text style={styles.font2}>Confirm</Text>
         </TouchableOpacity>
       </View>

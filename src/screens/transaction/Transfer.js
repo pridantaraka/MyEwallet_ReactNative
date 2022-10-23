@@ -14,7 +14,7 @@ import {
   FOURTH_COLOR,
 } from '../../styles/constant';
 import React from 'react';
-import InputTrans from '../../components/InputTrans';
+// import InputTrans from '../../components/InputTrans';
 import {CardTransfer} from '../../components/CardMenu';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserById} from '../../redux/asyncActions/transaction';
@@ -30,6 +30,9 @@ const Transfer = ({navigation}) => {
   const userSelect = useSelector(state => state.transaction.dataRecipient);
   const profileInfo = useSelector(state => state.profile.detailProfile);
   const token = useSelector(state => state.auth.token);
+  const pinUser = useSelector(state => state.auth.pin);
+  const CheckPin = parseInt(pinUser);
+  const type_id = 1;
 
   React.useEffect(() => {
     dispatch(getUserById({token, id_recipient}));
@@ -54,7 +57,11 @@ const Transfer = ({navigation}) => {
     note,
     time,
     date,
+    type_id,
+    pin: CheckPin,
   };
+
+  console.log('data dari transfer', data);
 
   const onInputAmount = () => {
     dispatch(inputAmount(data));

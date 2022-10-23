@@ -68,7 +68,7 @@ const Success = ({navigation}) => {
       <View style={styles.footer}>
         <TouchableOpacity
           style={styles.Button}
-          onPress={() => navigation.navigate('Failed')}>
+          onPress={() => navigation.navigate('Dashboard')}>
           <Text style={styles.font2}>Back Home</Text>
         </TouchableOpacity>
       </View>

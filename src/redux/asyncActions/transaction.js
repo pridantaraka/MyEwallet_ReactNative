@@ -65,6 +65,7 @@ export const Transfer = createAsyncThunk(
           'content-type': 'application/x-www-form-urlencoded',
         },
       });
+      console.log(data, 'asyc ation data');
       return data;
     } catch (e) {
       result.message = e.response.data.message;
