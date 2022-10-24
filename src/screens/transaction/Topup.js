@@ -81,7 +81,7 @@ const Topup = ({navigation}) => {
         <View style={styleslocal.MarginInput}>
           <TextInput
             style={{
-              borderBottom: 'none',
+              borderBottomWidth: 2,
               borderBottomColor: SECONDARY_COLOR,
               fontSize: 42,
               color: PRIMARY_COLOR,
