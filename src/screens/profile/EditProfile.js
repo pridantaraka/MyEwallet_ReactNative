@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import {
   PRIMARY_COLOR,
@@ -15,11 +16,31 @@ import {
 import styles from '../../styles/global';
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {editProfile} from '../../redux/asyncActions/profile';
 
 const EditProfile = ({navigation}) => {
   const [fullname, setFullname] = useState();
   const [phonenumber, setPhonenumber] = useState();
-  // const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
+  const dispatch = useDispatch();
+  const alertPopup = () =>
+    Alert.alert('Edit Profile', 'Edit Profile Succesfuly', [
+      {
+        text: 'OK',
+        onPress: () => {
+          dispatch(editProfile({data, token}));
+          navigation.navigate('Profilemenu');
+        },
+      },
+    ]);
+  const data = {
+    fullname,
+    phonenumber,
+  };
+  console.log(data, 'data dari edit');
+  const onSumbit = () => {
+    dispatch(alertPopup);
+  };
   return (
     <ScrollView style={styles.wrapper}>
       <View>
@@ -39,7 +60,7 @@ const EditProfile = ({navigation}) => {
             onChangeText={newPhonenumber => setPhonenumber(newPhonenumber)}
             initialValue={phonenumber}
           />
-          <TouchableOpacity style={styles.Button}>
+          <TouchableOpacity style={styles.Button} onPress={onSumbit}>
             <Text style={styles.font2}>Confirm</Text>
           </TouchableOpacity>
         </View>

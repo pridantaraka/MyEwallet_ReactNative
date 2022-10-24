@@ -39,7 +39,15 @@ const Topup = ({navigation}) => {
 
   const dispatch = useDispatch();
   const alertPopup = () =>
-    Alert.alert('Topup', 'TopUp Succesfuly', [{text: 'OK'}]);
+    Alert.alert('Topup', 'TopUp Succesfuly', [
+      {
+        text: 'OK',
+        onPress: () => {
+          dispatch(TopupBalance({data, token}));
+          navigation.navigate('Dashboard');
+        },
+      },
+    ]);
   const time_transaction = `${date} ${time}`;
   const profileInfo = useSelector(state => state.profile.detailProfile);
   const token = useSelector(state => state.auth.token);
@@ -52,9 +60,7 @@ const Topup = ({navigation}) => {
   };
 
   const onTopup = () => {
-    dispatch(TopupBalance({data, token}));
     dispatch(alertPopup);
-    navigation.navigate('Dashboard');
   };
 
   React.useEffect(() => {
