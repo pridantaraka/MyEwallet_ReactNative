@@ -65,17 +65,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  button: {
-    backgroundColor: PRIMARY_COLOR,
-    width: (Dimensions.get('screen').width * 90) / 100,
-    paddingVertical: 10,
-    alignItems: 'center',
-    borderRadius: 12,
-    elevation: 3,
-  },
-  buttonText: {
-    color: 'white',
-  },
   picture: {
     height: 50,
     width: 50,

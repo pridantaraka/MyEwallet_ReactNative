@@ -38,7 +38,7 @@ const PinCheck = ({navigation}) => {
   const pin = Object.values(data).join('');
   return (
     <>
-      <View style={styles.wrapperInput}>
+      <View style={styles.wrapper}>
         <View
           style={{
             flexDirection: 'column',
@@ -86,9 +86,9 @@ const PinCheck = ({navigation}) => {
             defaultValue={sixth}
           />
         </View>
-        <View style={{paddingTop: 30}}>
+        <View style={styles.footer}>
           <TouchableOpacity
-            style={styles.buttonWrapper}
+            style={styles.Button}
             onPress={() => {
               if (pin === pinUser) {
                 const data = {
@@ -105,8 +105,8 @@ const PinCheck = ({navigation}) => {
                 navigation.navigate('Failed');
               }
             }}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Transfer Now</Text>
+            <View>
+              <Text style={styles.font2}>Transfer Now</Text>
             </View>
           </TouchableOpacity>
         </View>
