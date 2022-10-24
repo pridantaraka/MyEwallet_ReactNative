@@ -17,15 +17,33 @@ import imagebg from '../../assets/images/polabg.jpg';
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const successMsg = useSelector(state => state.auth.successMsg);
+  const errorMsg = useSelector(state => state.auth.errorMsg);
   const dispatch = useDispatch();
   const [showText, setShow] = React.useState(false);
   const data = {
     email,
     password,
   };
+  const alertPopup = () => {
+    if (email.payload !== errorMsg) {
+      Alert.alert('Login', 'Login Succesfuly', [
+        {
+          text: 'OK',
+          onPress: () => {
+            dispatch(login(data));
+            // navigation.navigate('Dashboard');
+          },
+        },
+      ]);
+    }
+    if (email == errorMsg && password == errorMsg) {
+      Alert.alert('Error', 'Wrong Password or Email');
+    }
+  };
 
   const onLogin = () => {
-    dispatch(login(data));
+    dispatch(alertPopup);
   };
 
   return (
