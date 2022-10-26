@@ -1,18 +1,30 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import {SECONDARY_COLOR} from '../styles/constant';
+import styles from '../styles/global';
+import {useSelector} from 'react-redux';
 
-export const CardContact = ({item}) => {
+export const CardContact = ({fullname, phonenumber, imageSrc}) => {
+  const profileInfo = useSelector(state => state.profile.data);
   return (
     <>
       <View style={styleslocal.wrapper}>
         <View style={styleslocal.wrapper1}>
           <View style={styleslocal.picture}>
-            <Image />
+            <Image
+              source={{uri: profileInfo.picture}}
+              style={{
+                height: 40,
+                width: 40,
+                aspectRatio: 1,
+                borderRadius: 15,
+                marginRight: 20,
+              }}
+            />
           </View>
           <View style={styleslocal.name}>
-            <Text style={styleslocal.font}>{item.fullname}</Text>
-            <Text style={styleslocal.font}>{item.phonenumber}</Text>
+            <Text style={styleslocal.font}>{fullname}</Text>
+            <Text style={styleslocal.font}>{phonenumber}</Text>
           </View>
         </View>
       </View>
@@ -21,12 +33,23 @@ export const CardContact = ({item}) => {
 };
 
 export const CardHistory = ({item}) => {
+  const dataHistory = useSelector(state => state.transaction.data);
+  console.log('ini data picture', dataHistory);
   return (
     <>
       <View style={styleslocal.wrapper}>
         <View style={styleslocal.wrapper1}>
           <View style={styleslocal.picture}>
-            <Image />
+            <Image
+              source={{uri: dataHistory.recipient_picture}}
+              style={{
+                height: 40,
+                width: 40,
+                aspectRatio: 1,
+                borderRadius: 15,
+                marginRight: 20,
+              }}
+            />
           </View>
           <View style={styleslocal.name}>
             <Text style={styleslocal.font}>{item.recipient_fullname}</Text>

@@ -36,9 +36,17 @@ export const auth = createSlice({
         state.successMsg = action.payload?.successMsg;
       }
     });
+    build.addCase(register.pending, state => {
+      state.errorMsg = null;
+      state.successMsg = null;
+    });
+    build.addCase(register.fulfilled, (state, action) => {
+      state.errorMsg = action.payload?.errorMsg;
+      state.successMsg = action.payload?.successMsg;
+    });
   },
 });
 
 export default auth.reducer;
-export {login};
+export {login, register};
 export const {logout, saveToken} = auth.actions;

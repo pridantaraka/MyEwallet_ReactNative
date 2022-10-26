@@ -73,7 +73,10 @@ const Transaction = ({navigation}) => {
                       dispatch(selectRecipient(item.id_user));
                       navigation.navigate('Transfer');
                     }}>
-                    <CardContact item={item} />
+                    <CardContact
+                      fullname={item.fullname}
+                      phonenumber={item.phonenumber}
+                    />
                   </TouchableOpacity>
                 );
               }}

@@ -48,3 +48,26 @@ export const editProfile = createAsyncThunk('editProfile', async request => {
     return result;
   }
 });
+export const uploadImage = createAsyncThunk(
+  'profile/update-picture',
+  async param => {
+    const result = {};
+    const form = new FormData();
+    form.append('picture', {
+      uri: param.data.uri,
+      name: param.data.fileName,
+      type: param.data.type,
+    });
+    try {
+      const {data} = await http(param.token).patch('/update', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return data;
+    } catch (e) {
+      result.errorMsg = e.response.data.message;
+      return result;
+    }
+  },
+);

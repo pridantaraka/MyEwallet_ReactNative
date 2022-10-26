@@ -1,14 +1,10 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 StyleSheet;
-import {
-  PRIMARY_COLOR,
-  SECONDARY_COLOR,
-  THIRD_COLOR,
-  FOURTH_COLOR,
-} from '../styles/constant';
+import {PRIMARY_COLOR, SECONDARY_COLOR} from '../styles/constant';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/global';
+import {useSelector} from 'react-redux';
 
 export const CardMenu = ({menu, icon}) => {
   return (
@@ -49,10 +45,20 @@ export const CardContact = ({name, phone}) => {
 };
 
 export const CardTransfer = ({name, phone}) => {
+  const profileInfo = useSelector(state => state.profile.detailProfile);
   return (
     <View style={styleslocal.card5}>
-      <View style={styleslocal.picture}>
-        <Image />
+      <View>
+        <Image
+          source={{uri: profileInfo.picture}}
+          style={{
+            height: 50,
+            width: 50,
+            aspectRatio: 1,
+            borderRadius: 15,
+            marginRight: 20,
+          }}
+        />
       </View>
       <View>
         <Text style={styles.font1}>{name}</Text>
@@ -63,11 +69,21 @@ export const CardTransfer = ({name, phone}) => {
 };
 
 export const CardProfile = ({greeting, name, icon}) => {
+  const profileInfo = useSelector(state => state.profile.detailProfile);
   return (
     <View style={styleslocal.card3}>
       <View style={styleslocal.wrappercard}>
-        <View style={styleslocal.picture}>
-          <Image />
+        <View>
+          <Image
+            source={{uri: profileInfo.picture}}
+            style={{
+              height: 50,
+              width: 50,
+              aspectRatio: 1,
+              borderRadius: 15,
+              marginRight: 20,
+            }}
+          />
         </View>
         <View>
           <Text>{greeting}</Text>

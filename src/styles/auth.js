@@ -96,6 +96,12 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Dimensions.get('screen').width,
   },
+  signText: {
+    fontSize: 14,
+    color: PRIMARY_COLOR,
+    paddingBottom: 0,
+    marginBottom: 0,
+  },
 });
 
 export default styles;

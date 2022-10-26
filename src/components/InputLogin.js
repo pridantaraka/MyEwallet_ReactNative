@@ -16,6 +16,7 @@ const InputLogin = ({
   onChange,
   value,
   defaultValue,
+  name,
 }) => {
   const [showText, setShow] = React.useState(false);
   return (
@@ -28,7 +29,7 @@ const InputLogin = ({
           placeholder={placeholder}
           keyboardType={type}
           secureTextEntry={!showText}
-          onChangeText={onChange}
+          onChange={onChange}
           value={value}
           defaultValue={defaultValue}
         />

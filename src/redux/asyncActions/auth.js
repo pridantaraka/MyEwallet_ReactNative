@@ -11,11 +11,13 @@ export const login = createAsyncThunk('auth/login', async request => {
         'content-type': 'application/x-www-form-urlencoded',
       },
     });
+    console.log(data, 'login request');
     result.successMsg = data.message;
     result.token = data.results.token;
     result.pin = data.results.pin;
     return result;
   } catch (e) {
+    console.log('gagal');
     result.errorMsg = e.response.data.message;
     return result;
   }

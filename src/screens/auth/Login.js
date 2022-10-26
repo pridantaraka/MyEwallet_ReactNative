@@ -25,25 +25,23 @@ const Login = ({navigation}) => {
     email,
     password,
   };
-  const alertPopup = () => {
-    if (email.payload !== errorMsg) {
-      Alert.alert('Login', 'Login Succesfuly', [
-        {
-          text: 'OK',
-          onPress: () => {
-            dispatch(login(data));
-            // navigation.navigate('Dashboard');
-          },
-        },
-      ]);
-    }
-    if (email == errorMsg && password == errorMsg) {
-      Alert.alert('Error', 'Wrong Password or Email');
-    }
-  };
+  console.log(data);
+  // const alertPopup = () => {
+  //     Alert.alert('Login', 'Login Succesfuly', [
+  //       {
+  //         text: 'OK',
+  //         onPress: () => {
+  //           dispatch(login(data));
+  //           // navigation.navigate('Dashboard');
+  //         },
+  //       },
+  //     ]);
+  //   }
+  // };
 
   const onLogin = () => {
-    dispatch(alertPopup);
+    // dispatch(alertPopup);
+    dispatch(login(data));
   };
 
   return (
@@ -103,7 +101,7 @@ const Login = ({navigation}) => {
                   Don`t have an account? Let`s
                   <TouchableOpacity
                     onPress={() => navigation.navigate('Signup')}>
-                    <Text> Sign Up </Text>
+                    <Text style={styles.signText}> Sign Up </Text>
                   </TouchableOpacity>
                 </Text>
               </View>
