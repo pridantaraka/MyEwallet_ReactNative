@@ -14,5 +14,13 @@ MyEwallet mobile is app mobile version e-wallet arttos web also integrate with b
   <td><img src="https://user-images.githubusercontent.com/105355980/205482887-d2bc0b72-b31f-4739-83dd-e24af7b5a5a9.jpg"></td>
   <td><img src="https://user-images.githubusercontent.com/105355980/205482902-28c18193-7676-4608-929e-e42fa868ccb4.jpg"></td>
 </tr>
-
 </table>
+
+## Requirements
+<ol>
+  <li>React Native</li>  
+</ol>
+
+<ul>
+  <li>React Native</li>
+</ul>
