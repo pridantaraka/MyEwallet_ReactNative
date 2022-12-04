@@ -23,6 +23,7 @@ MyEwallet mobile is app mobile version e-wallet arttos web also integrate with b
   <li>install all package using "yarn install" (if you want install on local)</li>
 </ul>
 
+## How to install on local
 <ol>
   <li>Clone this project</li>
   <li>Open this project using the code editor</li>
